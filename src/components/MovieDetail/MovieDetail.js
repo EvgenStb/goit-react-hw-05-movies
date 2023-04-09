@@ -1,5 +1,6 @@
 import { IMG_BASE_URL } from "API/API";
 import { Container, SubTitle, Text, Poster } from './MoveDetails.styled';
+import notFoundImage from '../Cast/img/notFoundImage.png';
 
 export const MovieDetail = ({movie}) => {
   const {
@@ -11,7 +12,7 @@ export const MovieDetail = ({movie}) => {
     title,
     vote_average,
   } = movie;
-  const imgPath = IMG_BASE_URL.concat(poster_path);
+  const imgPath = ( poster_path? IMG_BASE_URL.concat(poster_path): notFoundImage);
   const genresList = genres.map(item => item.name).join(", ")
   const dateRelise = release_date.slice(0, 4);
   const userScore = vote_average.toFixed(1);
