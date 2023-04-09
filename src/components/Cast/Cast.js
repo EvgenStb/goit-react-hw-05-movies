@@ -19,14 +19,13 @@ const Cast = () => {
         <CastList>
           {casts.map(cast => (
             <CastItem key={cast.id}>
-              {cast.profile_path ? (
-                <CastImg
-                  src={`${IMG_BASE_URL}${cast.profile_path}`}
-                  alt={`${cast.original_name}`}
-                />
-              ) : (
-                <CastImg src={notFoundImage} alt={`${cast.original_name}`} />
-              )}
+              <CastImg
+                src={
+                  cast.profile_path
+                    ? `${IMG_BASE_URL}${cast.profile_path}`
+                    : notFoundImage
+                }
+              />
               <NameActor>{cast.original_name}</NameActor>
             </CastItem>
           ))}
@@ -36,3 +35,14 @@ const Cast = () => {
   );
 };
 export default Cast;
+
+// {
+//   cast.profile_path ? (
+//     <CastImg
+//       src={profile_path ? `${IMG_BASE_URL}${cast.profile_path}` : notFoundImage}
+//       alt={`${cast.original_name}`}
+//     />
+//   ) : (
+//     <CastImg src={notFoundImage} alt={`${cast.original_name}`} />
+//   );
+// }

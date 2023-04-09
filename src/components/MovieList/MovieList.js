@@ -1,4 +1,5 @@
 import {useLocation } from 'react-router-dom';
+import notFoundImage from '../Cast/img/notFoundImage.png';
 import PropTypes from 'prop-types';
 import {
   MoviesList,
@@ -17,7 +18,9 @@ export const MovieList = ({movies}) => {
           <MovieItem key={id}>
             <MovieLink to={`/movies/${id}`} state={{ from: location }}>
               <MoviePoster
-                src={IMG_BASE_URL.concat(poster_path)}
+                src={
+                  poster_path ? IMG_BASE_URL.concat(poster_path) : notFoundImage
+                }
                 alt={`${title}`}
               />
               <MovieTitle>{title ?? original_name}</MovieTitle>
